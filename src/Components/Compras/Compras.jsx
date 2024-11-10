@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Importar useNavigate
+import { useNavigate } from 'react-router-dom'; 
 import './Compras.css';
 
 export const Compras = () => {
@@ -8,10 +8,10 @@ export const Compras = () => {
   const [purchases, setPurchases] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // Inicializar useNavigate
+  const navigate = useNavigate(); 
 
   useEffect(() => {
-    axios.get('tienda-production-38a3.up.railway.app/api/sales')
+    axios.get('https://tienda-production-38a3.up.railway.app/api/sales')
       .then((response) => {
         const productDetails = response.data.productDetails;
 
@@ -59,10 +59,10 @@ export const Compras = () => {
       ) : (
         <p>No hay compras registradas.</p>
       )}
-      {/* Botón para regresar al buscador */}
+    
       <button 
         className="logout-button" 
-        onClick={() => navigate('/buscador')} // Cambiar la ruta según tu configuración
+        onClick={() => navigate('/')}
       >
         Regresar al Buscador
       </button>

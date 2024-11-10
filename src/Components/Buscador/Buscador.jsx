@@ -20,8 +20,8 @@ export const Buscador = () => {
 
   return (
     <div className="buscador-container">
-      <img src="/public/logo.png" alt="Logo" className="logo" />
-      <h1>Bazar Online</h1>
+     
+      <h1 className='l'>Bazar Online</h1>
       <div className="search-bar">
         <input
           type="text"
@@ -29,8 +29,9 @@ export const Buscador = () => {
           value={consultaBusqueda}
           onChange={manejarCambioBusqueda}
         />
-        <button onClick={manejarClicBusqueda}>Buscar</button>
+       
       </div>
+      <button onClick={manejarClicBusqueda}>Buscar</button>
     </div>
   );
 };

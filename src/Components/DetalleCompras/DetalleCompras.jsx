@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { products } from "../../json/products";
 import axios from 'axios';
-import Swal from 'sweetalert2'; // Importa SweetAlert2
+import Swal from 'sweetalert2'; 
 import "./DetalleCompras.css";
 import { Buscador } from '../Buscador/Buscador';
 
@@ -48,10 +48,9 @@ export const DetalleCompras = () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await axios.post('tienda-production-38a3.up.railway.app/api/addSale', purchaseData); 
+      const response = await axios.post('https://tienda-production-38a3.up.railway.app/api/addSale', purchaseData); 
       setSuccess(true);
       console.log('Compra realizada con éxito:', response.data);
-
 
       Swal.fire({
         icon: 'success',
@@ -60,14 +59,12 @@ export const DetalleCompras = () => {
         confirmButtonText: 'Aceptar',
       });
 
- 
       navigate('/compras');  
 
     } catch (err) {
       setError('Hubo un error al realizar la compra.');
       console.error('Error:', err);
 
- 
       Swal.fire({
         icon: 'error',
         title: 'Error al realizar la compra',
@@ -81,8 +78,9 @@ export const DetalleCompras = () => {
 
   return (
     <div>
-      <Buscador />
+    
       <div className='detalle-producto-container'>
+      <Buscador />
         <div className='card-producto'>
           <div className='card-imagenes'>
             <div className='imagen-principal'>

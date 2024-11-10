@@ -5,17 +5,30 @@ import './productos.css';
 import { Buscador } from '../Buscador/Buscador';
 
 export const Lista_productos = () => {
-  const navigate = useNavigate(); 
-  const location = useLocation(); 
+  const navigate = useNavigate();
+  const location = useLocation();
   const [productosFiltrados, setProductosFiltrados] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const verDetalleProducto = (id) => {
-    navigate(`/item/${id}`);  
+    navigate(`/item/${id}`);
+  };
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    
+    if (!query) {
+      navigate('/productos'); 
+    } else {
+      navigate(`/productos?search=${query}`);
+    }
   };
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
-    const searchQuery = urlParams.get('search');
+    const searchQuery = urlParams.get('search') || ''; 
+
+    setSearchQuery(searchQuery);
 
     if (searchQuery) {
       const filtrados = products.filter(producto =>
@@ -23,15 +36,19 @@ export const Lista_productos = () => {
       );
       setProductosFiltrados(filtrados);
     } else {
-      setProductosFiltrados(products);  
+      setProductosFiltrados(products);
     }
   }, [location.search]); 
 
   return (
     <div className="resultados-busqueda">
-        
       <div className="contenedor-buscador">
-      
+        <Buscador onSearch={handleSearch} value={searchQuery} />
+      </div>
+
+      <div className="resultado-cantidad">
+        {/* Mostrar la cantidad de resultados encontrados */}
+        <p>{productosFiltrados.length} producto{productosFiltrados.length !== 1 ? 's' : ''} encontrado{productosFiltrados.length !== 1 ? 's' : ''}</p>
       </div>
 
       <div className="lista-productos">

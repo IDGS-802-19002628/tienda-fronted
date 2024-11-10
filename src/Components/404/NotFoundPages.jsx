@@ -9,9 +9,6 @@ export const NotFoundPages = () => {
     navigate('/');
   };
 
-  const handleRedirectToSearch = () => {
-    navigate('/search'); // Ajusta la ruta al buscador según tu configuración
-  };
 
   return (
     <div className="not-found">

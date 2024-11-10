@@ -1,42 +1,331 @@
-#root {
-  max-width: 1280px;
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+  flex-direction: column;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.contenedor-principal {
+  width: 100%;
+  max-width: 1200px;
+  padding: 1rem;
+  box-sizing: border-box;
   margin: 0 auto;
-  padding: 2rem;
+}
+
+/* Estilo para las cards */
+.card-producto {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 1rem;
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 320px;
+  padding: 0.5rem;
+}
+
+.card-producto:hover {
+  transform: scale(1.05);
+}
+
+
+.informacion-producto {
+  padding: 1rem;
+}
+
+h2, h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0.5rem 0;
+}
+
+/* Botones en las tarjetas */
+.boton-comprar {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+}
+
+.boton-comprar:hover {
+  background-color: #45a049;
+}
+
+
+.search-bar {
+  width: 100%;
+  max-width: 500px;
+  margin: 1rem auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.search-bar input {
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.search-bar button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.search-bar button:hover {
+  background-color: #0056b3;
+}
+
+
+.lista-productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  align-items: flex-start; 
+  margin-top: 2rem; 
+  max-height: 500px; 
+  overflow-y: auto; 
+  padding-right: 20px; 
+  padding-left: 20px;
+  gap: 1rem; 
+}
+
+
+.tarjeta-producto {
+  background-color: white;
+  margin: 1rem;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-producto:hover {
+  transform: scale(1.05);
+}
+
+.informacion-producto {
+  padding: 1rem;
+  text-align: left;
+}
+
+.imagen-producto {
+  width: 100%; 
+  height: auto; 
+  object-fit: cover; 
+}
+
+
+.purchases {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 500px;
+  overflow-y: auto; 
+  padding-right: 10px; 
+  padding-left: 10px; /
+}
+
+.purchase-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px; 
+  transition: transform 0.3s ease;
+}
+
+.purchase-item:hover {
+  transform: scale(1.05);
+}
+
+.purchase-details {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.logout-button {
+  background-color: #FF5733;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.logout-button:hover {
+  background-color: #C70039;
+}
+
+
+@media (max-width: 768px) {
+  .card-producto, .tarjeta-producto {
+    max-width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .imagen-producto {
+    height: 180px; 
+    object-position: center; 
+  }
+
+  .search-bar input {
+    max-width: 100%;
+    padding: 0.5rem;
+  }
+
+  .search-bar button {
+    padding: 0.5rem 1rem;
+  }
+
+  .search-bar {
+    position: relative;
+    z-index: 2;
+  }
+
+  .boton-comprar {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .informacion-producto {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .card-producto, .tarjeta-producto {
+    max-width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .informacion-producto {
+    padding: 1rem;
+  }
+
+  .boton-comprar {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  h2, h3 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .logo {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+
+button:focus, input:focus {
+  outline: 2px solid #007BFF;
+  outline-offset: 2px;
+}
+
+input, button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+
+.card-producto, .tarjeta-producto, .boton-comprar {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.card-producto:hover, .tarjeta-producto:hover {
+  transform: scale(1.05);
+}
+
+.boton-comprar:hover {
+  background-color: #45a049;
+}
+
+.l {
+  padding-top: 40px;
+}
+
+.detalle-producto-container {
+  padding-top: 170px;
+  max-width: 1200px;
+  margin: 0 auto;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.detalle-producto-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.detalle-producto-container p {
+  font-size: 1rem;
+  color: #555;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.imagen-producto-detalle {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 20px;
 }
 
-.card {
-  padding: 2em;
+.boton-agregar-carrito {
+  background-color: #4CAF50;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
 }
 
-.read-the-docs {
-  color: #888;
+.boton-agregar-carrito:hover {
+  background-color: #45a049;
 }
